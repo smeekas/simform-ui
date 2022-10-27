@@ -3,7 +3,7 @@ orbs:
     node: circleci/node@5.0.2
 
 jobs:
-  say-hello:
+  test-must-passes:
 
     docker:
       - image: cimg/node:16.14.0
@@ -37,4 +37,4 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
+      - test-must-passes
