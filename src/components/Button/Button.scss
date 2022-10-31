@@ -1,0 +1,55 @@
+@import "../../styles/variables.scss";
+@import "./mixin.scss";
+.zen-button {
+  font-size: 1.05rem;
+  background-color: white;
+  border-color: #d9d9d9;
+  border-width: 1.5px;
+  border-style: solid;
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: 2px;
+  outline: none;
+  transition: all 150ms linear;
+}
+
+.zen-button:hover {
+  color: rgba($primary-color, 0.8);
+  border-color: rgba($primary-color, 0.8);
+}
+
+.zen-primary {
+  background-color: $primary-color;
+  color: white;
+  border-color: $primary-color;
+}
+.zen-primary:hover {
+  background-color: rgba($primary-color, 0.8);
+  color: white;
+  border-color: rgba($primary-color, 0.8);
+}
+
+.zen-ghost {
+  &.zen-primary {
+    @include PrimaryColor();
+  }
+  background-color: transparent;
+}
+
+.zen-ghost:hover {
+  background-color: transparent;
+}
+
+.zen-disabled {
+  cursor: not-allowed;
+  background-color: $disabled-color;
+  color: $disabled-border-color;
+  border-color: $disabled-border-color;
+}
+.zen-disabled:hover {
+  cursor: not-allowed;
+  background-color: s$disabled-color;
+  color: $disabled-border-color;
+
+  border-color: $disabled-border-color;
+}
