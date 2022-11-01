@@ -11,3 +11,10 @@
     }
   }
   
+@mixin disabledColor {
+  color:$disabled-border-color;
+  &:hover{
+    color: $disabled-border-color;
+  }
+  
+}

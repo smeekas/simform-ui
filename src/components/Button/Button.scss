@@ -3,17 +3,23 @@
 .zen-button {
   font-size: $default-font-size;
   background-color: white;
-  border-color: #d9d9d9;
+  border-color: $border-color;
   border-width: 1.5px;
   border-style: solid;
   padding: $default-vertical-padding $default-horizontal-padding;
   cursor: pointer;
+  white-space:nowrap;
   border-radius: 2px;
+
   outline: none;
   
   line-height: $default-line-height;
   letter-spacing: $default-letter-spacing;
   transition: all 150ms linear;
+}
+.zen-button:hover {
+  color: rgba($primary-color, 0.8);
+  border-color: rgba($primary-color, 0.8);
 }
 .zen-large{
   padding: $large-vertical-padding $large-horizontal-padding;
@@ -25,11 +31,16 @@
   font-size: $small-font-size ;
   // line-height: ;
 }
-.zen-button:hover {
-  color: rgba($primary-color, 0.8);
-  border-color: rgba($primary-color, 0.8);
+.zen-block{
+  display: block;
+  width: 100%;
 }
-
+.zen-circle{
+  border-radius: 50%;
+}
+.zen-round{
+  border-radius: 25px;
+}
 .zen-primary {
   background-color: $primary-color;
   color: white;
@@ -41,8 +52,7 @@
 
   }
 }
-.zen-primary:hover {
-}
+
 
 .zen-dashed{
   border-style: dashed;
@@ -60,14 +70,16 @@
 
   }
 }
-// .zen-danger:hover {
-// }
+
 .zen-ghost {
   &.zen-primary {
     @include primaryColor();
   }
   &.zen-danger {
     @include dangerColor();
+  }
+  &.zen-disabled{
+    @include disabledColor();
   }
   background-color: transparent;
 }
@@ -89,6 +101,3 @@
     border-color: $disabled-border-color;
   }
 }
-// .zen-disabled:hover {
-  
-// }
