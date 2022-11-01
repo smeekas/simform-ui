@@ -1,10 +1,10 @@
-@mixin PrimaryColor() {
+@mixin primaryColor() {
   color: $primary-color;
   &:hover {
     color: rgba($primary-color, 0.8);
   }
 }
-@mixin DangerColor() {
+@mixin dangerColor() {
     color: $danger-color;
     &:hover {
       color: rgba($danger-color, 0.8);

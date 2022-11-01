@@ -10,7 +10,9 @@ function App() {
   return (
     <div className="App">
     <div >hello</div>
-    <Button ghost  onClick={handler} varient="primary" />
+    <Button size='large'    ghost onClick={handler} varient="primary" />
+    <Button size='medium'   ghost onClick={handler} varient="primary" />
+    <Button size='small'   disabled ghost onClick={handler} varient="primary" />
     </div>
   );
 }

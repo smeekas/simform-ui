@@ -1,18 +1,30 @@
 @import "../../styles/variables.scss";
 @import "./mixin.scss";
 .zen-button {
-  font-size: 1.05rem;
+  font-size: $default-font-size;
   background-color: white;
   border-color: #d9d9d9;
   border-width: 1.5px;
   border-style: solid;
-  padding: 4px 10px;
+  padding: $default-vertical-padding $default-horizontal-padding;
   cursor: pointer;
   border-radius: 2px;
   outline: none;
+  
+  line-height: $default-line-height;
+  letter-spacing: $default-letter-spacing;
   transition: all 150ms linear;
 }
-
+.zen-large{
+  padding: $large-vertical-padding $large-horizontal-padding;
+  font-size:$large-font-size
+  
+}
+.zen-small{
+  padding: $small-vertical-padding $small-horizontal-padding;
+  font-size: $small-font-size ;
+  // line-height: ;
+}
 .zen-button:hover {
   color: rgba($primary-color, 0.8);
   border-color: rgba($primary-color, 0.8);
@@ -22,16 +34,34 @@
   background-color: $primary-color;
   color: white;
   border-color: $primary-color;
+  &:hover{
+    background-color: rgba($primary-color, 0.8);
+    color: white;
+    border-color: rgba($primary-color, 0.8);
+
+  }
 }
 .zen-primary:hover {
-  background-color: rgba($primary-color, 0.8);
-  color: white;
-  border-color: rgba($primary-color, 0.8);
 }
+.zen-danger {
+  background-color: $danger-color;
+  color: white;
+  border-color: $danger-color;
+  &:hover{
+    background-color: rgba($danger-color, 0.8);
+    color: white;
+    border-color: rgba($danger-color, 0.8);
 
+  }
+}
+// .zen-danger:hover {
+// }
 .zen-ghost {
   &.zen-primary {
-    @include PrimaryColor();
+    @include primaryColor();
+  }
+  &.zen-danger {
+    @include dangerColor();
   }
   background-color: transparent;
 }
@@ -42,14 +72,17 @@
 
 .zen-disabled {
   cursor: not-allowed;
-  background-color: $disabled-color;
+  background-color: $disabled-color ;
   color: $disabled-border-color;
   border-color: $disabled-border-color;
+  &:hover{
+    cursor: not-allowed;
+    background-color: $disabled-color ;
+    color: $disabled-border-color;
+    
+    border-color: $disabled-border-color;
+  }
 }
-.zen-disabled:hover {
-  cursor: not-allowed;
-  background-color: s$disabled-color;
-  color: $disabled-border-color;
-
-  border-color: $disabled-border-color;
-}
+// .zen-disabled:hover {
+  
+// }
