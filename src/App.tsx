@@ -12,7 +12,7 @@ function App() {
     <div >hello</div>
     <Button size='large'    ghost onClick={handler} varient="primary" />
     <Button size='medium'   ghost onClick={handler} varient="primary" />
-    <Button size='small'   disabled ghost onClick={handler} varient="primary" />
+    <Button     onClick={handler} varient="dashed" />
     </div>
   );
 }

@@ -43,6 +43,12 @@
 }
 .zen-primary:hover {
 }
+
+.zen-dashed{
+  border-style: dashed;
+  background: white;
+  
+}
 .zen-danger {
   background-color: $danger-color;
   color: white;

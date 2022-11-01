@@ -2,7 +2,7 @@ import React, { HTMLProps, ButtonHTMLAttributes, HTMLAttributes } from "react";
 import "./Button.scss";
 import classNames from "classnames";
 interface buttonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  varient?: "primary" | "default" | "danger";
+  varient?: "primary" | "default" | "danger" | "dashed";
   ghost?: boolean;
   size?: "small" | "medium" | "large";
 }
