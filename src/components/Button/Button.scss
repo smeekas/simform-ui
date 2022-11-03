@@ -3,65 +3,80 @@
 .zen-button {
   font-size: $default-font-size;
   background-color: white;
-  border-color: #d9d9d9;
+  border-color: $border-color;
   border-width: 1.5px;
   border-style: solid;
   padding: $default-vertical-padding $default-horizontal-padding;
   cursor: pointer;
+  white-space: nowrap;
+  // vertical-align: middle;
   border-radius: 2px;
+
   outline: none;
-  
+  @include iconStyle(white, $border-color);
   line-height: $default-line-height;
   letter-spacing: $default-letter-spacing;
   transition: all 150ms linear;
 }
-.zen-large{
-  padding: $large-vertical-padding $large-horizontal-padding;
-  font-size:$large-font-size
-  
-}
-.zen-small{
-  padding: $small-vertical-padding $small-horizontal-padding;
-  font-size: $small-font-size ;
-  // line-height: ;
-}
 .zen-button:hover {
   color: rgba($primary-color, 0.8);
+  @include iconStyle(white, rgba($primary-color, 0.8));
+
   border-color: rgba($primary-color, 0.8);
 }
-
+.zen-large {
+  padding: $large-vertical-padding $large-horizontal-padding;
+  font-size: $large-font-size;
+}
+.zen-small {
+  padding: $small-vertical-padding $small-horizontal-padding;
+  font-size: $small-font-size;
+  // line-height: ;
+}
+.zen-block {
+  display: block;
+  width: 100%;
+}
+.zen-circle {
+  border-radius: 50%;
+}
+.zen-round {
+  border-radius: 25px;
+}
 .zen-primary {
   background-color: $primary-color;
   color: white;
   border-color: $primary-color;
-  &:hover{
+  @include iconStyle($primary-color, white);
+
+  &:hover {
     background-color: rgba($primary-color, 0.8);
     color: white;
-    border-color: rgba($primary-color, 0.8);
+    @include iconStyle(rgba($primary-color, 0.8), white);
 
+    border-color: rgba($primary-color, 0.8);
   }
 }
-.zen-primary:hover {
-}
 
-.zen-dashed{
+.zen-dashed {
   border-style: dashed;
   background: white;
-  
 }
 .zen-danger {
   background-color: $danger-color;
   color: white;
   border-color: $danger-color;
-  &:hover{
+  @include iconStyle($danger-color, white);
+
+  &:hover {
     background-color: rgba($danger-color, 0.8);
+    @include iconStyle(rgba($danger-color, 0.8), white);
+
     color: white;
     border-color: rgba($danger-color, 0.8);
-
   }
 }
-// .zen-danger:hover {
-// }
+
 .zen-ghost {
   &.zen-primary {
     @include primaryColor();
@@ -69,7 +84,16 @@
   &.zen-danger {
     @include dangerColor();
   }
-  background-color: transparent;
+  &.zen-disabled {
+    @include disabledColor();
+    & > .ant-loading-icon {
+      border-color: $disabled-border-color;
+      border-bottom-color: transparent;
+    }
+  }
+  @include iconColor();
+  background-color: transparent !important;
+  @include iconTransparentBackground();
 }
 
 .zen-ghost:hover {
@@ -78,17 +102,22 @@
 
 .zen-disabled {
   cursor: not-allowed;
-  background-color: $disabled-color ;
+  background-color: $disabled-color;
   color: $disabled-border-color;
   border-color: $disabled-border-color;
-  &:hover{
+  & > .ant-loading-icon {
+    border-color: $disabled-border-color;
+    border-bottom-color: $disabled-color;
+  }
+  &:hover > .ant-loading-icon {
+    border-color: $disabled-border-color;
+    border-bottom-color: $disabled-color;
+  }
+  &:hover {
     cursor: not-allowed;
-    background-color: $disabled-color ;
+    background-color: $disabled-color;
     color: $disabled-border-color;
-    
+
     border-color: $disabled-border-color;
   }
 }
-// .zen-disabled:hover {
-  
-// }
