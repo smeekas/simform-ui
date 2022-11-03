@@ -1,0 +1,62 @@
+.zen-divider-with-text {
+  display: flex;
+  margin: 16px 0;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  border-top: 0;
+  border-top-color: rgba(0, 0, 0, 0.4);
+  clear: both;
+  width: 100%;
+  min-width: 100%;
+  line-height: 1.55;
+}
+.zen-divider-with-text::before,
+.zen-divider-with-text::after {
+  box-sizing: border-box;
+  position: relative;
+  top: 50%;
+  width: 50%;
+  border-top: 1px solid transparent;
+  border-top-color: inherit;
+  border-bottom: 0;
+  transform: translateY(50%);
+  content: "";
+}
+.zen-divider-dashed::before,
+.zen-divider-dashed::after {
+  border-top-style: dashed;
+}
+.zen-divider-text {
+  padding: 0 16px;
+}
+.zen-divider-left::after,
+.zen-divider-right::before {
+  top: 50%;
+  width: 95%;
+}
+.zen-divider-left::before,
+.zen-divider-right::after {
+  top: 50%;
+  width: 5%;
+}
+.zen-divider-vertical {
+  position: relative;
+  top: -0.06em;
+  display: inline;
+  height: 0.9em;
+  margin: 0 8px;
+  vertical-align: middle;
+  border-top: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+.zen-divider-margin-left::before{
+    width: 0%;
+}
+.zen-divider-margin-right::after{
+  width: 0%;
+}
