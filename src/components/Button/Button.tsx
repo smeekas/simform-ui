@@ -6,19 +6,31 @@ import React, {
 } from "react";
 import "./Button.scss";
 import classNames from "classnames";
+import LoadingIcon from "./LoadingIcon";
 interface buttonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   varient?: "primary" | "default" | "danger" | "dashed";
   ghost?: boolean;
   size?: "small" | "medium" | "large";
   block?: boolean;
   shape?: "default" | "circle" | "round";
-  children?: React.ReactNode;
+  children?: React.ReactNode | string;
+  loading?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, buttonProps>(
   (props, ref) => {
-    const { disabled, ghost, size, varient, block, children, shape, ...rest } =
-      props;
+    const {
+      disabled,
+      ghost,
+      size,
+      varient,
+      loading,
+      block,
+      children,
+      shape,
+      onClick,
+      ...rest
+    } = props;
     console.log(ref);
     const classnames = classNames({
       [`zen-${varient}`]: varient !== "default",
@@ -29,13 +41,20 @@ const Button = React.forwardRef<HTMLButtonElement, buttonProps>(
       [`zen-${shape}`]: shape !== "default",
     });
     console.log(classnames);
+    const clickhandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+      if (!loading && onClick) {
+        onClick(e);
+      }
+    };
     return (
       <button
+        onClick={clickhandler}
         disabled={disabled}
         className={`zen-button ${classnames}`}
         {...(rest as ButtonHTMLAttributes<HTMLButtonElement>)}
         ref={ref}
       >
+        {loading && <LoadingIcon />}
         {children && children}
       </button>
     );
