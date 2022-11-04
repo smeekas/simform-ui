@@ -18,12 +18,12 @@ function App() {
       <Divider orientation="left">hello</Divider>
       <Divider orientation="center">hello</Divider>
       <Divider orientation="right">Hello</Divider>
-      <Divider varient="dashed" orientationMargin={20} orientation="left">
-        hello
+      <Divider varient="dashed" orientationMargin  orientation="left">
+        hello1
       </Divider>
       <Divider varient="dashed">hello</Divider>
-      <Divider varient="dashed" orientationMargin={50} orientation="right">
-        hello
+      <Divider varient="dashed" orientationMargin orientation="right">
+        hello2
       </Divider>
       hello
       <Divider type="vertical"></Divider>
