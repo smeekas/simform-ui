@@ -6,7 +6,8 @@ interface DividerProps {
   orientation?: "left" | "right" | "center";
   children?: string;
   type?: "horizontal" | "vertical";
-  orientationMargin?: boolean | number;
+  orientationMargin?: boolean;
+  orientationMarginValue?: number;
 }
 
 const Divider = React.forwardRef<HTMLParagraphElement, DividerProps>(
@@ -17,6 +18,7 @@ const Divider = React.forwardRef<HTMLParagraphElement, DividerProps>(
       orientation = "center",
       type,
       orientationMargin,
+      orientationMarginValue,
     } = props;
     const classnames = className({
       [`zen-divider-${orientation}`]: orientation,
@@ -32,12 +34,12 @@ const Divider = React.forwardRef<HTMLParagraphElement, DividerProps>(
           <span
             style={{
               marginLeft:
-                orientation === "left" && typeof orientationMargin === "number"
-                  ? orientationMargin
+                orientation === "left" && orientationMargin
+                  ? orientationMarginValue
                   : 0,
               marginRight:
-                orientation === "right" && typeof orientationMargin === "number"
-                  ? orientationMargin
+                orientation === "right" && orientationMargin
+                  ? orientationMarginValue
                   : 0,
             }}
             className="zen-divider-text"
