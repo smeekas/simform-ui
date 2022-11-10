@@ -1,0 +1,43 @@
+@mixin backgroundColor($color) {
+  & {
+    background-color: $color;
+    cursor: pointer;
+  }
+}
+@mixin color($color) {
+  & {
+    color: $color;
+  }
+}
+
+@mixin size($width, $height, $gutter, $control-size, $radius) {
+  padding-left: $width;
+
+  input:checked ~ .zen-toggle-control {
+    &:after {
+      left: $width - $control-size - $gutter;
+    }
+  }
+
+  .zen-toggle-control {
+    height: $height;
+    width: $width;
+    border-radius: $radius;
+
+    &:after {
+      left: $gutter;
+      top: $gutter;
+      width: $control-size;
+      height: $control-size;
+      border-radius: $radius;
+    }
+  }
+}
+
+@mixin hoverEffect($color) {
+  &.zen-toggle-hover:active {
+    transition: filter 0.3s;
+
+    filter: drop-shadow(0px 0px 4px $color);
+  }
+}
