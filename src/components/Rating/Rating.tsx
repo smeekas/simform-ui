@@ -2,7 +2,6 @@ import classNames from "classnames";
 import React, {
   CSSProperties,
   MouseEventHandler,
-  useCallback,
   useEffect,
   useState,
 } from "react";
@@ -157,7 +156,10 @@ const Rating = React.forwardRef<HTMLElement, RatingPropsType>((props, ref) => {
                   // STAR
                   // "A"
                   //TODO
-                  <span style={{ fontSize: fontSize, fontWeight: "bold" }}>
+                  <span
+                    className="zen-character"
+                    style={{ fontSize: fontSize }}
+                  >
                     {character}
                   </span>
                 )}
