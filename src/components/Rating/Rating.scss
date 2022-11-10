@@ -1,0 +1,35 @@
+.zen-rating {
+//   display: flex;
+  display: inline-flex;
+  flex-wrap: wrap;
+  // border: 1px solid blue;
+}
+.zen-star {
+  // width: 25px;
+  cursor: pointer;
+  padding-left: 4px;
+  // height: 25px;
+  stroke: black;
+  transition: all 150ms linear;
+}
+.zen-star:hover {
+    transform: scale(1.1);
+  }
+.zen-fill {
+  color: #f9ad2c;
+  stroke: #f9ad2c;
+
+}
+.zen-empty{
+    color: #cecece;
+    stroke: #cecece;
+}
+
+.zen-rating-disabled{
+  .zen-star{
+    cursor: auto;
+  }
+  .zen-star:hover{
+    transform: scale(1);
+  }
+}

@@ -1,42 +1,45 @@
-import React, { MouseEventHandler } from "react";
+import React, {
+  MouseEventHandler,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import Button from "./components/Button/Button";
 import Divider from "./components/Divider/Divider";
+import Rating from "./components/Rating/Rating";
 
 function App() {
   const ref = React.useRef<HTMLButtonElement>(null);
   const handler: MouseEventHandler = (e) => {
     // console.log(ref)
   };
+  const changeHandler = useCallback(() => console.log(), []);
+  useEffect(() => {
+    console.log("worked");
+  }, [changeHandler]);
+  const [ran, setRan] = useState(1);
   return (
     <div className="App">
       <div>hello</div>
-      <Button size="large" ghost onClick={handler} varient="primary" />
-      <Button size="medium" ghost onClick={handler} varient="primary" />
-      <Button onClick={handler} varient="dashed" />
-      <Divider></Divider>
-      <Divider varient="dashed"></Divider>
-      <Divider orientation="left">hello</Divider>
-      <Divider orientation="center">hello</Divider>
-      <Divider orientation="right">Hello</Divider>
-      <Divider varient="dashed" orientationMargin={20} orientation="left">
-        hello
-      </Divider>
-      <Divider varient="dashed">hello</Divider>
-      <Divider varient="dashed" orientationMargin={50} orientation="right">
-        hello
-      </Divider>
-      hello
-      <Divider type="vertical"></Divider>
-      Hello World!
-      <Divider type="vertical"></Divider>
-      {/* <Divider type="horizontal">rgt</Divider> */}
+      <input
+        type={"range"}
+        value={ran}
+        onChange={(e) => setRan(+e.target.value)}
+        min={1}
+        max={5}
+      />
+      <Rating
+        value={ran}
+        count={10}
+        allowClear
+        character="S"
+        onHoverChange={(count) => {
+          console.log(count);
+        }}
+        onChange={changeHandler}
+      />
     </div>
   );
 }
 
 export default App;
-//TODO COLOR VARIABLES
-//TODO button component
-//TODO --> button default design
-//TODO --> button varient design design
-//TODO --> button icon support
