@@ -1,0 +1,91 @@
+@import "../../styles/variables.scss";
+@import "./mixin.scss";
+.zen-toggle {
+  display: block;
+  position: relative;
+  padding-left: $toggle-width-medium;
+  margin-bottom: 12px;
+  user-select: none;
+  font-size: 22px;
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  input:checked ~ .zen-toggle-control {
+    @include backgroundColor($toggle-background-color-on);
+    @include hoverEffect($toggle-background-color-on);
+    &:after {
+      left: $toggle-width-medium - $toggle-control-size-medium -
+        $toggle-gutter-medium;
+    }
+
+    // filter: drop-shadow(1px 2px 8px var(hsl(220deg 60% 50%)));
+  }
+
+  .zen-toggle-control {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    height: $toggle-height-medium;
+    width: $toggle-width-medium;
+    border-radius: $toggle-radius-medium;
+    @include backgroundColor($toggle-background-color-off);
+    @include hoverEffect($toggle-background-color-off);
+    transition: background-color $toggle-control-speed $toggle-control-ease;
+    &.zen-toggle-disabled:after {
+      cursor: not-allowed;
+    }
+    &:after {
+      content: "";
+
+      position: absolute;
+      left: $toggle-gutter-medium;
+      top: $toggle-gutter-medium;
+      width: $toggle-control-size-medium;
+      height: $toggle-control-size-medium;
+      border-radius: $toggle-radius-medium;
+      background: $toggle-control-color;
+      transition: left $toggle-control-speed $toggle-control-ease;
+    }
+  }
+}
+
+.zen-toggle-small {
+  @include size(
+    $toggle-width-small,
+    $toggle-height-small,
+    $toggle-gutter-small,
+    $toggle-control-size-small,
+    $toggle-radius-small
+  );
+}
+
+.zen-toggle-large {
+  @include size(
+    $toggle-width-large,
+    $toggle-height-large,
+    $toggle-gutter-large,
+    $toggle-control-size-large,
+    $toggle-radius-large
+  );
+}
+
+.zen-toggle-control.zen-toggle-disabled {
+  @include backgroundColor(rgba($toggle-background-color-off, 0.5));
+  cursor: not-allowed;
+}
+
+input:checked ~ .zen-toggle-control.zen-toggle-disabled {
+  @include backgroundColor(rgba($toggle-background-color-on, 0.5));
+  cursor: not-allowed;
+}
+
+// .zen-toggle-control:hover {
+//   transition: filter 0.3s;
+//   filter: drop-shadow(0px 0px 1px rgb(51, 102, 204));
+//   // box-shadow: 0px 0px 4px hsl(220deg 60% 50%);
+// }
