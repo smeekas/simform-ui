@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Toggle.scss";
 import classNames from "classnames";
 
 interface ToggleProps {
   disabled?: boolean;
   checked?: boolean;
+  defaultChecked?: boolean;
   size?: "small" | "medium" | "large";
   className?: string;
   onClick?: (
@@ -18,8 +19,24 @@ interface ToggleProps {
   ref?: React.RefObject<HTMLInputElement>;
 }
 const Toggle = (props: ToggleProps) => {
-  const { disabled, checked, size = "medium", onClick, onChange, ref } = props;
-  const [isChecked, setIsChecked] = useState(!!checked);
+  const {
+    disabled,
+    checked,
+    size = "medium",
+    onClick,
+    onChange,
+    ref,
+    defaultChecked,
+  } = props;
+  const [isChecked, setIsChecked] = useState(
+    checked !== undefined ? checked : defaultChecked
+  );
+  useEffect(() => {
+    setIsChecked(defaultChecked);
+  }, [defaultChecked]);
+  useEffect(() => {
+    setIsChecked(checked);
+  }, [checked]);
   const classnamesLabel = classNames({
     [`zen-toggle-${size}`]: size,
   });
