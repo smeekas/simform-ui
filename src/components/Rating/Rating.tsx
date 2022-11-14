@@ -11,15 +11,15 @@ type RatingPropsType = {
   disabled?: boolean;
   className?: string;
   onChange?: (count: number) => void;
-  onHoverChange?: (count: number) => void;
   allowClear?: boolean;
+  onHoverChange?: (count: number) => void;
   value?: number;
   style?: CSSProperties;
   fillColor?: string;
   fontSize?: number;
   fillBackgroundColor?: string;
   count?: number;
-  character?: React.ReactNode;
+  character?: React.ReactNode | string;
   // events
 };
 const Rating = React.forwardRef<HTMLElement, RatingPropsType>((props, ref) => {
