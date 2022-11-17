@@ -1,5 +1,6 @@
 import React, { useState, CSSProperties, MouseEventHandler } from "react";
 import "./Pagination.scss";
+import classNames from "classnames";
 type PaginationPropTypes = {
   total?: number;
   onChange?: (page?: number, pageSize?: number) => void;
@@ -8,6 +9,11 @@ type PaginationPropTypes = {
   defaultCurrent?: number;
   pageSize?: number;
   defaultPageSize?: number;
+  disabled?: boolean;
+  showSizeChanger?: boolean; //TODO
+  pageSizeOptions?: number[]; //TODO
+  showQuickJumper?: boolean;
+  showFirstAndLast?: boolean;
 };
 function Pagination(props: PaginationPropTypes) {
   const {
@@ -16,6 +22,9 @@ function Pagination(props: PaginationPropTypes) {
     defaultPageSize,
     pageSize: pageSizeProp,
     total = 1,
+    disabled,
+    showQuickJumper,
+    showFirstAndLast,
   } = props;
   const [pageSize, setPageSize] = useState(
     defaultPageSize !== undefined
@@ -31,20 +40,41 @@ function Pagination(props: PaginationPropTypes) {
       ? currentProp
       : 1
   );
-  const pageChangeHandler = (pageNumber: number) => {
-    setCurrent(pageNumber);
-  };
-//   const totalPageNumber=total/pageSize
-  const prevExits = current !== 1;
+  const totalPageNumber = Math.round(Math.ceil(total / pageSize));
+  const prevExists = current !== 1;
   const nextExists = current * pageSize < total;
-  const FirstExists = current > 2;
-//   const lastExists=d
-  const prevDots = current > 2;
-  console.log(current);
+  const firstExists = current > 2;
+  const lastExists = current <= totalPageNumber - 2;
+  const prevDots = current > 3;
+  const nextDots = current <= totalPageNumber - 3;
+  const classnames = classNames({
+    "zen-pagination-disabled": disabled,
+  });
+
+  const pageChangeHandler = (pageNumber: number) => {
+    if (!disabled) {
+      if (pageNumber < 1) {
+        setCurrent(1);
+      }
+      if (pageNumber > totalPageNumber) {
+        setCurrent(totalPageNumber);
+      }
+      setCurrent(pageNumber);
+    }
+  };
+
   return (
     <>
-      <ul className="zen-pagination-list">
-        {prevExits && (
+      <ul className={`zen-pagination-list ${classnames}`}>
+        {showQuickJumper && prevExists && (
+          <li
+            className="zen-pagination-list-item"
+            onClick={pageChangeHandler.bind(null, current - 5)}
+          >
+            {"<<"}
+          </li>
+        )}
+        {prevExists && (
           <li
             className="zen-pagination-list-item"
             onClick={pageChangeHandler.bind(null, current - 1)}
@@ -53,7 +83,7 @@ function Pagination(props: PaginationPropTypes) {
           </li>
         )}
 
-        {FirstExists && (
+        {firstExists && showFirstAndLast && (
           <li
             className="zen-pagination-list-item"
             onClick={pageChangeHandler.bind(null, 1)}
@@ -69,7 +99,7 @@ function Pagination(props: PaginationPropTypes) {
             <div className="zen-pagination-dots"> • • •</div>
           </li>
         )}
-        {prevExits && (
+        {prevExists && (
           <li
             className="zen-pagination-list-item"
             onClick={pageChangeHandler.bind(null, current - 1)}
@@ -90,12 +120,36 @@ function Pagination(props: PaginationPropTypes) {
             {current + 1}
           </li>
         )}
+        {nextDots && (
+          <li
+            className="zen-pagination-list-item zen-pagination-list-dots"
+            // onClick={pageChangeHandler.bind(null, current - 1)}
+          >
+            <div className="zen-pagination-dots"> • • •</div>
+          </li>
+        )}
+        {lastExists && showFirstAndLast && (
+          <li
+            className="zen-pagination-list-item"
+            onClick={pageChangeHandler.bind(null, totalPageNumber)}
+          >
+            {totalPageNumber}
+          </li>
+        )}
         {nextExists && (
           <li
             className="zen-pagination-list-item"
             onClick={pageChangeHandler.bind(null, current + 1)}
           >
             {">"}
+          </li>
+        )}
+        {showQuickJumper && nextExists && (
+          <li
+            className="zen-pagination-list-item"
+            onClick={pageChangeHandler.bind(null, current + 5)}
+          >
+            {">>"}
           </li>
         )}
       </ul>
