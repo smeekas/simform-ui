@@ -2,7 +2,7 @@ import React, { CSSProperties } from "react";
 import "./Stack.scss";
 import { StyleInjector } from "../../utils/Styleinjector";
 
-interface StackProps {
+export interface StackProps {
   direction?: CSSProperties["flexDirection"];
   alignItems?: CSSProperties["alignItems"];
   children?: JSX.Element[] | JSX.Element;
@@ -40,4 +40,5 @@ const Stack = (props: StackProps) => {
   );
 };
 
-export default Stack;
+
+export default Stack
