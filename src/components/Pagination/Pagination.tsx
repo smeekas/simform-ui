@@ -1,20 +1,27 @@
-import React, { useState, CSSProperties, MouseEventHandler } from "react";
+import React, {
+  useState,
+  CSSProperties,
+  MouseEventHandler,
+  useEffect,
+} from "react";
 import "./Pagination.scss";
 import classNames from "classnames";
+import useMemoizeFunction from "../../hook/useMemoizefunction";
 type PaginationPropTypes = {
   total?: number;
-  onChange?: (page?: number, pageSize?: number) => void;
+  onChange?: (page: number, pageSize: number) => void;
   //   onPageSizeChange?: (page?: number, pageSize?: number) => void;
   current?: number;
   defaultCurrent?: number;
   pageSize?: number;
   defaultPageSize?: number;
   disabled?: boolean;
-  showSizeChanger?: boolean; //TODO
-  pageSizeOptions?: number[]; //TODO
+  //  showSizeChanger?: boolean; //TODO after dropdown
+  // pageSizeOptions?: number[]; //TODO
   showQuickJumper?: boolean;
   showFirstAndLast?: boolean;
 };
+//TODO if click on three dot then jump by 5
 function Pagination(props: PaginationPropTypes) {
   const {
     current: currentProp,
@@ -25,7 +32,10 @@ function Pagination(props: PaginationPropTypes) {
     disabled,
     showQuickJumper,
     showFirstAndLast,
+    onChange: onChangeWithoutCallback = () => {},
+    // pageSizeOptions = [],
   } = props;
+  const onChange = useMemoizeFunction(onChangeWithoutCallback);
   const [pageSize, setPageSize] = useState(
     defaultPageSize !== undefined
       ? defaultPageSize
@@ -50,7 +60,9 @@ function Pagination(props: PaginationPropTypes) {
   const classnames = classNames({
     "zen-pagination-disabled": disabled,
   });
-
+  useEffect(() => {
+    onChange(current, pageSize);
+  }, [current, onChange, pageSize]);
   const pageChangeHandler = (pageNumber: number) => {
     if (!disabled) {
       if (pageNumber < 1) {
