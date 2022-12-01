@@ -60,7 +60,8 @@ export default {
     },
     children: {
       control: false,
-      description: "childrens on which you want to apply stack ( here we have button for example )",
+      description:
+        "childrens on which you want to apply stack ( here we have button for example )",
     },
   },
 } as unknown as ComponentMeta<typeof Stack>;

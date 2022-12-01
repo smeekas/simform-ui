@@ -40,5 +40,4 @@ const Stack = (props: StackProps) => {
   );
 };
 
-
-export default Stack
+export default Stack;

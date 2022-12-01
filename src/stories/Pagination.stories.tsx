@@ -12,6 +12,6 @@ const Template: ComponentStory<typeof Pagination> = (args) => (
 
 export const pagination = Template.bind({});
 pagination.args = {
-    total:50,
-    pageSize:5
+  total: 50,
+  pageSize: 5,
 };

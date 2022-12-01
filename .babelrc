@@ -1,0 +1,63 @@
+{
+  "presets": ["@babel/preset-env"],
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": false
+          }
+        ],
+        "@babel/preset-react",
+        "@babel/preset-typescript"
+      ]
+    },
+    "commonjs": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": "commonjs"
+          }
+        ],
+        "@babel/preset-react",
+        "@babel/preset-typescript"
+      ],
+      "plugins": [
+        [
+          "file-loader",
+          {
+            "name": "[name]-[hash].[ext]",
+            "extensions": ["png", "jpg", "gif", "svg"],
+            "publicPath": "",
+            "outputPath": "/dist"
+          }
+        ]
+      ]
+    },
+    "es": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": false
+          }
+        ],
+        "@babel/preset-react",
+        "@babel/preset-typescript"
+      ],
+      "plugins": [
+        [
+          "file-loader",
+          {
+            "name": "[name]-[hash].[ext]",
+            "extensions": ["png", "jpg", "gif", "svg"],
+            "publicPath": "",
+            "outputPath": "/dist"
+          }
+        ]
+      ]
+    }
+  }
+}

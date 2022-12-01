@@ -2,6 +2,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import Button from "../Button";
 import "@testing-library/jest-dom";
+import React from 'react'
 test("disabled button", () => {
   render(<Button disabled>button</Button>);
   const buttonElement = screen.getByRole("button", { name: /button/i });

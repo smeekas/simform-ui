@@ -7,7 +7,13 @@ export default {
   component: Rating,
   decorators: [
     (Story: Story) => (
-      <div style={{ display:"flex",justifyContent:"center",marginTop:"10rem" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "10rem",
+        }}
+      >
         <Story />
       </div>
     ),
