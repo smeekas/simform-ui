@@ -31,7 +31,6 @@ const Button = React.forwardRef<HTMLButtonElement, buttonProps>(
       onClick,
       ...rest
     } = props;
-    console.log(ref);
     const classnames = classNames({
       [`zen-${varient}`]: varient !== "default",
       [`zen-disabled`]: disabled,
@@ -40,7 +39,6 @@ const Button = React.forwardRef<HTMLButtonElement, buttonProps>(
       [`zen-block`]: block,
       [`zen-${shape}`]: shape !== "default",
     });
-    console.log(classnames);
     const clickhandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
       if (!loading && onClick) {
         onClick(e);
