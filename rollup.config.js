@@ -34,7 +34,8 @@ export default {
     resolve(),
     commonjs(),
     typescript({
-      tsconfig: "./tsconfig.json", exclude: ["**/.tests.ts", "**/*.test.tsx"]
+      tsconfig: "./tsconfig.json",
+      exclude: ["**/.tests.ts", "**/*.test.tsx"],
     }),
     terser(),
   ],
