@@ -1,28 +1,26 @@
 module.exports = {
-  stories: ['../src/**/*.stories.tsx'],
+  stories: ["../src/**/*.stories.tsx"],
   addons: [
-    '@storybook/addon-links',
+    "@storybook/addon-links",
     // {
     //   name: 'storybook-addon-sass-postcss',
     //   options: { rule: { test: /\.(scss|sass)$/i, }, }
     // },
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
   ],
-  framework: '@storybook/react',
+  framework: "@storybook/react",
   core: {
-    builder: '@storybook/builder-webpack5',
+    builder: "@storybook/builder-webpack5",
   },
   webpackFinal: async (config) => {
     config.module.rules.find(
-      (rule) => rule.test.toString() === '/\\.css$/'
+      (rule) => rule.test.toString() === "/\\.css$/"
     ).exclude = /\.scss$/;
 
     config.module.rules.push({
       test: /\.scss$/,
-      use: [
-        'style-loader', 'css-loader', 'sass-loader'
-      ],
+      use: ["style-loader", "css-loader", "sass-loader"],
     });
 
     return config;
