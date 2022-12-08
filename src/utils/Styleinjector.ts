@@ -1,7 +1,7 @@
 import React from "react";
 export const StyleInjector = (
   children: JSX.Element[] | JSX.Element,
-  style: React.CSSProperties
+  style: React.CSSProperties,
 ) => {
   return React.Children.map(children, (child, index) => {
     if (index === 0) {
