@@ -1,0 +1,52 @@
+.zen-avatar {
+  display: flex;
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  justify-content: center;
+  user-select: none;
+  overflow-x: hidden;
+  background-color: grey;
+  color: white;
+  transition: all 0.2s linear;
+  font-weight: 400;
+  font-size: 1.25rem;
+
+  //    border: 1px solid grey;
+}
+
+.zen-avatar-small {
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+}
+.zen-avatar-default {
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+}
+.zen-avatar-large {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+}
+.zen-circle {
+  border-radius: 50%;
+}
+.zen-square {
+  border-radius: 10%;
+}
+.zen-img {
+  width: 100%;
+  padding: 0;
+  object-fit: cover;
+  
+  height: 100%;
+  border-radius: inherit;
+}
+.zen-no-profile {
+  fill: white;
+  width: 100%;
+  height: 100%;
+  border-color: #bdbdbd;
+  background-color: #bdbdbd;
+}

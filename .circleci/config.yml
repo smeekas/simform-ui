@@ -28,8 +28,8 @@ jobs:
           name: "installing packages"
           command: "yarn "
       - run:
-          name: "yarn test"
-          command: "yarn test a"
+          name: "yarn test "
+          command: "yarn test  --passWithNoTests"
       
 
 # Invoke jobs via workflows
