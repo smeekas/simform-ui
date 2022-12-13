@@ -8,6 +8,7 @@ interface AvatarProps {
   alt?: string;
   source?: string;
   color?: string;
+  name?: string;
   style?: CSSProperties
   onClick?: (arg0: React.MouseEvent<HTMLDivElement>) => void
 }
@@ -28,7 +29,7 @@ const useImageLoad = (src: string) => {
   return imageloaded;
 };
 const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
-  const { style, source, shape = "circle", alt, color, size = "default", onClick: onClickWithoutCallback = () => { } } = props;
+  const { style, source, name, shape = "circle", alt, color, size = "default", onClick: onClickWithoutCallback = () => { } } = props;
   let isImage = false;
   if (source) {
     isImage = useImageLoad(source);
@@ -39,7 +40,15 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
     [`zen-${shape}`]: shape,
     [`zen-avatar-${size}`]: size,
   });
-  const hasAlt = alt && alt.trim().length > 0;
+  let fallback: string = ""
+  if (name && name.trim().length > 0) {
+    fallback = name.trim()[0]
+  }
+  console.log(name)
+  if (fallback === "" && alt && alt.trim().length > 0) {
+    console.log("HERE");
+    fallback = alt.trim()[0]
+  }
   let sizeNumber = 0;
   if (typeof size === "number") {
     sizeNumber = size;
@@ -60,8 +69,8 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
       className={`zen-avatar ${classNames}`}
     >
       {isImage && <img alt={alt} className="zen-img" src={source} />}
-      {!isImage && hasAlt && alt[0].toUpperCase()}
-      {!isImage && !hasAlt && (
+      {!isImage && fallback && fallback}
+      {!isImage && fallback.length == 0 && (
         <svg
           className="zen-no-profile"
           focusable="false"
